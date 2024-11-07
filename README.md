@@ -1,65 +1,55 @@
-# healthCheck README
+# Vscode Health Check Extension Structure
 
-This is the README for your extension "healthCheck". After writing up a brief description, we recommend including the following sections.
-
-## Features
-
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+### Source Code (`src/`)
+- **src/extension.js**  
+  The main entry point for the extension, handling activation and deactivation events.
 
 ---
+#### Commands (`src/commands/`)
+- **src/commands/RegisterCommands.js**  
+  Registers all commands for the extension.
+- **src/commands/ExampleCommand.js**  
+  An example command module, typically interacting with the notification manager or other core modules.
 
-## Working with Markdown
+---
+#### Notifications (`src/notifications/`)
+- **src/notifications/notificationManager.js**  
+  Manages notifications, providing methods for displaying messages (e.g., info, warning, error).
+- **src/notifications/notificationHelper.js**  
+  Contains helper functions for notifications, supporting `NotificationManager`.
+- **src/notifications/informationalNotification.js**  
+  For general updates or non-urgent information.
+- **src/notifications/advisoryNotification.js**   
+  For warnings or notices that need some attention.
+- **src/notifications/criticalNotification.js**    
+  For urgent issues requiring immediate action.
 
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
+---
+#### Timer (`src/Rimer/`)
+- **src/timer/mainTimer.js**   
+  define the main internal timer and all the timer use this for count the time.
+- **src/timer/timeController**  
+  make your timer controller
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
+---
+#### Config (`src/config/`)
+- **src/timer/config.js**   
+  read or set config
 
-## For more information
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+---
+#### constance (`src/constance/`)
+- **src/constance/practices.js**   
+  practices include healthy practice that have color, icon, repeat time etc...
 
-**Enjoy!**
+---
+#### Sidebar (`src/sidebar/`)
+- **...**   
+  .......
+
+---
+#### Web Views (`src/views/`)
+- **src/views/helpView.js**  
+  Learn user about the healthy advice.
+- **src/views/notificationView.js**  
+  For critical notification we use a web view.
