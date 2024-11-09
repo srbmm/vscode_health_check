@@ -4,7 +4,6 @@ const aSecond = 1000;
 
 const mainTimer = () => {
   // main timer
-  console.log('timer started')
   let timeCounter = 0;
   setInterval(() => {
     timeCounter++;

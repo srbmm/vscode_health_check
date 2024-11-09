@@ -2,8 +2,9 @@
 const mainTimeouts = []
 const vscodeTimeouts = []
 
+let idCounter = 0;
+
 const makeTimeout = (timeouts) => {
-    let idCounter = 0;
     return (callback, timeout) => {
         let goalTime = null;
         const id = idCounter++;
