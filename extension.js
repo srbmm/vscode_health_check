@@ -1,28 +1,32 @@
+const { checkUserActive } = require("./events");
 const { statusBar, addStatusBarNotification } = require("./statusBar");
-
 const vscode = require("vscode");
-const { mainTimer, addMainInterval, deleteMainInterval, addMainTimeout } = require("./timer");
+const { mainTimer, addMainInterval, deleteMainInterval, addMainTimeout, deleteMainTimer } = require("./timer");
 
 function activate(context) {
   console.log("extension started");
-  mainTimer();
+  const {isUserActiveRef, isVSCodeFocusedRef} = checkUserActive()
+  mainTimer(isVSCodeFocusedRef);
   statusBar();
 
-  addMainTimeout(() => {
-    addStatusBarNotification({icon: 'watch', color: '#cf8402', text: 'test for test', time: 10})
-  }, 10)
-  //   const data = addMainInterval((time) => {
-  //     if (time > 10) {
-  //       deleteMainInterval(data.id);
-  //     }
-  //     console.log("now: ", time);
-  //   }, 4);
+  
+  
+  // Event listeners to reset the idle timer on user activity
+
+  // // Periodic check (optional, just to log states)
+  // setInterval(() => {
+  //     console.log('VS Code focused:', isVSCodeFocused, 'User active:', isUserActive);
+  // }, 1000);
+
 }
 
 // This method is called when your extension is deactivated
-function deactivate() {}
+function deactivate() {
+  deleteMainTimer();
+}
 
 module.exports = {
   activate,
   deactivate,
 };
+

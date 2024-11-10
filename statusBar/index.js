@@ -6,31 +6,30 @@ const {
 } = require("./statusBarNotification.js");
 const vscode = require("vscode");
 
-const defaultIcon = "watch";
+const defaultIcon = "";
+const defaultTooltip = "Health Practice";
 const statusBar = () => {
   const timerStatusBarItem = vscode.window.createStatusBarItem(
     vscode.StatusBarAlignment.Left
   );
 
   timerStatusBarItem.show();
-
+  timerStatusBarItem.tooltip = defaultTooltip;
   let notificationCounter = 0;
   let icon = defaultIcon;
   addMainInterval((time) => {
     const strTime = timeConverterString(time);
-    timerStatusBarItem.text = `$(${icon}) ${strTime}`;
+    timerStatusBarItem.text = `$(pulse) ${icon && `$(${icon})`} ${strTime}`;
 
     // check and end notification
     if (notificationCounter !== 0) {
-       console.log(timerStatusBarItem.tooltip)
           notificationCounter--;
       return;
     } else {
         icon = defaultIcon;
         timerStatusBarItem.color = undefined;
-        timerStatusBarItem.tooltip = undefined;
+        timerStatusBarItem.tooltip = defaultTooltip;
     }
-    console.log(statusBarNotificationRef.value);
 
     // start notification
     if (statusBarNotificationRef.value) {
@@ -42,7 +41,7 @@ const statusBar = () => {
       timerStatusBarItem.tooltip = statusBarNotificationRef.value.text;
       statusBarNotificationRef.value = null;
     }
-  }, 1);
+  }, 1, true);
 };
 
 module.exports = { statusBar, addStatusBarNotification };

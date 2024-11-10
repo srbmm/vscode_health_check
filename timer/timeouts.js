@@ -1,70 +1,37 @@
-
-const mainTimeouts = []
-const vscodeTimeouts = []
+const mainTimeouts = [];
 
 let idCounter = 0;
 
-const makeTimeout = (timeouts) => {
+const makeTimeout = (timeouts, isVscode, inputId) => {
     return (callback, timeout) => {
-        let goalTime = null;
-        const id = idCounter++;
-        const timeToGoalRef = {
-            value: 0
-        }
-        
-        const deleteItem =  () => {
-            const index = timeouts.findIndex(item => item.id === id);
-            if(index !== -1){
-                timeouts.splice(index, 1);
-            }
-        }
+        const id = inputId ?? idCounter++;
         timeouts.push({
             id,
-            cb: (time) => {  
-                if(goalTime === null){
-                    goalTime = time + timeout;
-                }
-                timeToGoalRef.value = goalTime - time;
-                if(timeToGoalRef.value <= 0){
-                    callback(time);
-                    deleteItem();
-                }
-            },
+            cb: callback,
+            timeout,
+            isVscode
         })
-        return {id, timeToGoalRef};
+        return {id};
     }
 }
 
 
-const addMainTimeout = (callback, time) => {
-    const mainTimeout = makeTimeout(mainTimeouts);
-    return mainTimeout(callback, time - 1); 
+const addMainTimeout = (callback, time, isVscode, inputId) => {
+    const mainTimeout = makeTimeout(mainTimeouts, isVscode, inputId);
+    return mainTimeout(callback, time); 
 }
 
-const addVscodeTimeout = (callback, time) => {
-    const vscodeTimeout = makeTimeout(vscodeTimeouts);
-    return vscodeTimeout(callback, time - 1); 
-}
 
 const deleteMainTimeout = (id) => {
-    const index = mainTimeouts.findIndex(item => item.id === id);
-    if(index !== -1){
-        mainTimeouts.splice(index, 1);
-    }
+    // const index = mainTimeouts.findIndex(item => item.id === id);
+    // if(index !== -1){
+    //     mainTimeouts.splice(index, 1);
+    //}
 }
 
-const deleteVscodeTimeout = (id) => {
-    const index = vscodeTimeouts.findIndex(item => item.id === id);
-    if(index !== -1){
-        mainTimeouts.splice(index, 1);
-    }
-}
 
 module.exports = {
     mainTimeouts,
-    vscodeTimeouts,
     addMainTimeout,
-    addVscodeTimeout,
     deleteMainTimeout,
-    deleteVscodeTimeout,
 }

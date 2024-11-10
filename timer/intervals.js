@@ -1,48 +1,33 @@
-const { addMainTimeout, addVscodeTimeout } = require("./timeouts.js");
+const { addMainTimeout } = require("./timeouts.js");
 const { generateId } = require("../utils/generateId.js");
 
 const mainTimeoutDeleteIds = [];
-const vsCodeTimeoutDeleteIds = [];
-const makeInterval = (timeoutFunc, deleteList) => {
+const makeInterval = (timeoutFunc, deleteList, isVscode, ) => {
   const newId = generateId();
 
   const intervalFunc = (callback, time) => {
-    const data = timeoutFunc((now) => {
-      const index = mainTimeoutDeleteIds.findIndex(item => item === newId)
-      if(index !== -1) {
-        return deleteList.splice(index, 1);
-      }
+    timeoutFunc((now) => {
       callback(now);
       intervalFunc(callback, time);
-    }, time);
+    }, time, isVscode, newId);
+    
+    
     const newData = {
-      timeToGoalRef: data.timeToGoalRef,
-      id: newId
-    }
+      id: newId,
+    };
     return newData;
-  }
-  return intervalFunc
-}
-const addMainInterval = (callback, time) => {
-  const intervalFunc = makeInterval(addMainTimeout, mainTimeoutDeleteIds)
+  };
+  return intervalFunc;
+};
+const addMainInterval = (callback, time, isVscode) => {
+  const intervalFunc = makeInterval(addMainTimeout, mainTimeoutDeleteIds, isVscode);
   return intervalFunc(callback, time);
 };
-
-const addVscodeInterval = (callback, time) => {
-  const intervalFunc = makeInterval(addVscodeInterval, vsCodeTimeoutDeleteIds)
-  return intervalFunc(callback, time);
-};
-
 const deleteMainInterval = (id) => {
-  console.log(id)
   mainTimeoutDeleteIds.push(id);
-}
-const deleteVscodeInterval = (id) => {
-  vsCodeTimeoutDeleteIds.push(id);
-}
+};
+
 module.exports = {
   addMainInterval,
-  addVscodeInterval,
   deleteMainInterval,
-  deleteVscodeInterval
-}
+};
