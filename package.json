@@ -12,10 +12,41 @@
   "activationEvents": ["*"],
   "main": "./extension.js",
   "contributes": {
-    "commands": [{
-      "command": "healthCheck.helloWorld",
-      "title": "Hello World"
-    }]
+    "commands": [
+      {
+        "command": "health-time.showConfig",
+        "title": "Show Configuration"
+      },
+      {
+        "command": "health-time.showLevelConfig",
+        "title": "Configure level"
+      },
+      {
+        "command": "health-time.showAlertTypeConfig",
+        "title": "Configure Alert Type" 
+      },
+      {
+        "command": "health-time.showEnableDisableConfig",
+        "title": "Enable/Disable Alert"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "health-time" ,
+          "title": "Health",
+          "icon": "resources/icon.png"
+        }
+      ]
+    },
+    "views": {
+      "health-time": [
+        {
+          "id": "health-time-view",
+          "name": "Health View"
+        }
+      ]
+    }
   },
   "scripts": {
     "lint": "eslint .",
