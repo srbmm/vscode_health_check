@@ -17,8 +17,8 @@ const practices = [
       "longDescription": "Stay hydrated by drinking a glass of water every hour. Proper hydration supports overall health, including better focus and energy levels.",
       "emoji": "💧",
       "color": "#007f9c",
-      "time": 20,
-      "timeOut": 3000,
+      "time": 3000,
+      "timeOut": 20,
       "status": true,
       "level": "low"
     },
@@ -28,8 +28,8 @@ const practices = [
       "longDescription": "Get up and stretch your legs to improve circulation and reduce the risk of stiffness. A short walk can also refresh your mind and boost productivity.",
       "emoji": "🚶",
       "color": "#bd6500",
-      "time": 20,
-      "timeOut": 3600,
+      "time": 3600,
+      "timeOut": 20,
       "status": true,
       "level": "low"
     }

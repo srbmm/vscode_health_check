@@ -61,7 +61,6 @@ function activate(context) {
 
   // core
   for(let practice of config){
-    console.log(practice)
     addMainInterval(() => {
       const updatedPractice = readConfig().find(item => practice.name === item.name);
       if(!updatedPractice) return

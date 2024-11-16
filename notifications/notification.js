@@ -5,7 +5,7 @@ const { getLevel3Window, guideView } = require("../webViews");
 const vscode = require("vscode");
 
 // level: medium, high
-function notification(context, text, color, emoji, time, level, isVscodeTime) {
+function notification(context, text, color, emoji, time, level) {
   if (level === "high") {
     const panel = vscode.window.createWebviewPanel(
       "customPopup",
@@ -38,7 +38,7 @@ function notification(context, text, color, emoji, time, level, isVscodeTime) {
     panel.webview.html = getLevel3Window(text, color, emoji);
     addMainTimeout(() => {
       panel.dispose();
-    }, time, isVscodeTime);
+    }, time);
   }
   if (level === "medium") {
     vscode.window.showInformationMessage(emoji + ' "' + text + '"');
