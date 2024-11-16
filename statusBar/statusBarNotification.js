@@ -1,8 +1,8 @@
 const statusBarNotificationRef = {
     value: null,
 }
-const addStatusBarNotification = ({icon, color, text, time}) => {
-    statusBarNotificationRef.value = {icon, color, text, time};
+const addStatusBarNotification = ({emoji, color, text, time}) => {
+    statusBarNotificationRef.value = {emoji, color, text, time};
 }
 
 module.exports = {

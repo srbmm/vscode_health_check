@@ -70,7 +70,7 @@ function configurePractice(practiceName) {
 // Function to configure level
 function configureLevel(practiceName) {
   vscode.window
-    .showQuickPick(['Low', 'Medium', 'High'], {
+    .showQuickPick(['low', 'medium', 'high'], {
       placeHolder: `Select a level for "${practiceName}"`,
     })
     .then((selectedLevel) => {

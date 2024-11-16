@@ -19,7 +19,7 @@ const statusBar = () => {
   let icon = defaultIcon;
   addMainInterval((time) => {
     const strTime = timeConverterString(time);
-    timerStatusBarItem.text = `$(pulse) ${icon && `$(${icon})`} ${strTime}`;
+    timerStatusBarItem.text = `$(pulse) ${icon && `${icon}`} ${strTime}`;
 
     // check and end notification
     if (notificationCounter !== 0) {
@@ -34,14 +34,14 @@ const statusBar = () => {
     // start notification
     if (statusBarNotificationRef.value) {
       notificationCounter = statusBarNotificationRef.value.time;
-      icon = statusBarNotificationRef.value.icon;
+      icon = statusBarNotificationRef.value.emoji;
       if (statusBarNotificationRef.value.color) {
         timerStatusBarItem.color = statusBarNotificationRef.value.color;
       }
       timerStatusBarItem.tooltip = statusBarNotificationRef.value.text;
       statusBarNotificationRef.value = null;
     }
-  }, 1, true);
+  }, 1);
 };
 
 module.exports = { statusBar, addStatusBarNotification };

@@ -9,9 +9,22 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": ["*"],
+  "activationEvents": [
+    "*"
+  ],
   "main": "./extension.js",
   "contributes": {
+    "colors": [
+      {
+        "id": "myExtension.notificationBackground",
+        "description": "Background color for custom notifications.",
+        "defaults": {
+          "dark": "#ff0000",
+          "light": "#ffcccc",
+          "highContrast": "#ff0000"
+        }
+      }
+    ],
     "commands": [
       {
         "command": "health-time.showConfig",
@@ -23,7 +36,7 @@
       },
       {
         "command": "health-time.showAlertTypeConfig",
-        "title": "Configure Alert Type" 
+        "title": "Configure Alert Type"
       },
       {
         "command": "health-time.showEnableDisableConfig",
@@ -33,7 +46,7 @@
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "health-time" ,
+          "id": "health-time",
           "title": "Health",
           "icon": "resources/icon.png"
         }
