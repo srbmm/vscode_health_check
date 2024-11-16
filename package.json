@@ -1,7 +1,7 @@
 {
   "name": "healthCheck",
   "displayName": "Health check",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "publisher": "MohammadSohrabi",
   "engines": {
     "vscode": "^1.95.0"

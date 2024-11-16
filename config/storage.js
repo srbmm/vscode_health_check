@@ -18,12 +18,8 @@ function saveConfig(updatedConfig) {
     if (updatedPractice) {
       return {
         ...currentPractice,
-        description: updatedPractice.description,
-        longDescription: updatedPractice.longDescription,
-        emoji: updatedPractice.emoji,
-        color: updatedPractice.color,
-        time: updatedPractice.time,
-        timeOut: updatedPractice.timeOut,
+        level: updatedPractice.level,
+        status: updatedPractice.status,
       };
     }
 
