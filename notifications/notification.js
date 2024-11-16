@@ -1,7 +1,7 @@
 const { addStatusBarNotification } = require("../statusBar");
 
 const { addMainTimeout } = require("../timer");
-const { getLevel3Window } = require("../webViews");
+const { getLevel3Window, guideView } = require("../webViews");
 const vscode = require("vscode");
 
 // level: medium, high
@@ -28,7 +28,7 @@ function notification(context, text, color, emoji, time, level, isVscodeTime) {
               enableScripts: true,
             }
           );
-          detailPanel.webview.html = "<h1>Hiii</h1>";
+          detailPanel.webview.html = guideView();
         }
       },
       undefined,
