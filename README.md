@@ -63,7 +63,7 @@ Here’s what the extension offers:
 
 ## 🛠️ How to Contribute
 
-We welcome contributions to enhance this extension! Feel free to open issues or submit pull requests on our [GitHub Repository](#).
+We welcome contributions to enhance this extension! Feel free to open issues or submit pull requests on our [GitHub Repository](https://github.com/srbmm/vscode_health_check).
 
 ---
 
