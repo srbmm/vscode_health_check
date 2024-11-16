@@ -1,17 +1,23 @@
 {
   "name": "healthCheck",
   "displayName": "Health check",
-  "description": "",
-  "version": "0.0.1",
+  "version": "1.0.1",
+  "publisher": "MohammadSohrabi",
   "engines": {
     "vscode": "^1.95.0"
   },
+  "icon": "resources/icon.png", 
   "categories": [
     "Other"
   ],
+  "license": "MIT",
   "activationEvents": [
-    "*"
+    "onStartupFinished"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/srbmm/vscode_health_check.git"
+  },
   "main": "./extension.js",
   "contributes": {
     "colors": [

@@ -6,8 +6,8 @@ const practices = [
       "longDescription": "Take a break to relax your eyes by looking at a distant object for a few minutes. This helps reduce eye strain and improves focus.",
       "emoji": "👁️",
       "color": "#009c41",
-      "time": 24,
-      "timeOut": 5,
+      "time": 1200,
+      "timeOut": 20,
       "status": true,
       "level": "medium"
     },
@@ -17,10 +17,10 @@ const practices = [
       "longDescription": "Stay hydrated by drinking a glass of water every hour. Proper hydration supports overall health, including better focus and energy levels.",
       "emoji": "💧",
       "color": "#007f9c",
-      "time": 60,
-      "timeOut": 5,
+      "time": 20,
+      "timeOut": 3000,
       "status": true,
-      "level": "high"
+      "level": "low"
     },
     {
       "name": "Walking",
@@ -28,8 +28,8 @@ const practices = [
       "longDescription": "Get up and stretch your legs to improve circulation and reduce the risk of stiffness. A short walk can also refresh your mind and boost productivity.",
       "emoji": "🚶",
       "color": "#bd6500",
-      "time": 10,
-      "timeOut": 5,
+      "time": 20,
+      "timeOut": 3600,
       "status": true,
       "level": "low"
     }
