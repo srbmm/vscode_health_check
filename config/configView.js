@@ -1,6 +1,7 @@
 const vscode = require('vscode');
 const { saveConfig, readConfig } = require('./storage');
 const { practices } = require('./../constance/practices');
+const { guideView } = require('../webViews'); // Assuming guideView is in the guideView.js file
 
 // Class for individual configuration items
 class ConfigItem extends vscode.TreeItem {
@@ -22,8 +23,14 @@ class ConfigProvider {
   }
 
   getChildren() {
-    // Create dynamic items based on practices
-    return practices.map(
+    // Add a dynamic guide view item
+    const guideItem = new ConfigItem('Health & Plugin Guide', {
+      command: 'health-time.openGuide', // Custom command to open the guide
+      title: 'Open Health Guide',
+    });
+
+    // Add dynamic practice items
+    const practiceItems = practices.map(
       (practice) =>
         new ConfigItem(practice.name, {
           command: 'health-time.configurePractice',
@@ -31,6 +38,8 @@ class ConfigProvider {
           arguments: [practice.name], // Pass the practice name as an argument
         })
     );
+
+    return [guideItem, ...practiceItems];
   }
 
   refresh() {
@@ -38,34 +47,6 @@ class ConfigProvider {
   }
 }
 
-// Function to handle practice configuration
-function configurePractice(practiceName) {
-  const currentConfig = readConfig(); // Read the current configuration
-  const practice = currentConfig.find((p) => p.name === practiceName);
-
-  if (!practice) {
-    vscode.window.showErrorMessage(`Practice "${practiceName}" not found!`);
-    return;
-  }
-
-  // Create a menu to configure level, status, or description
-  vscode.window
-    .showQuickPick(['Configure Level', 'Enable/Disable'], {
-      placeHolder: `Select an option to configure "${practiceName}"`,
-    })
-    .then((selectedOption) => {
-      if (!selectedOption) return;
-
-      switch (selectedOption) {
-        case 'Configure Level':
-          configureLevel(practiceName);
-          break;
-        case 'Enable/Disable':
-          configureStatus(practiceName);
-          break;
-      }
-    });
-}
 
 // Function to configure level
 function configureLevel(practiceName) {
@@ -114,8 +95,53 @@ function configureStatus(practiceName) {
       );
     });
 }
+// Function to handle practice configuration
+function configurePractice(practiceName) {
+  const currentConfig = readConfig(); // Read the current configuration
+  const practice = currentConfig.find((p) => p.name === practiceName);
+
+  if (!practice) {
+    vscode.window.showErrorMessage(`Practice "${practiceName}" not found!`);
+    return;
+  }
+
+  // Create a menu to configure level, status, or description
+  vscode.window
+    .showQuickPick(['Configure Level', 'Enable/Disable'], {
+      placeHolder: `Select an option to configure "${practiceName}"`,
+    })
+    .then((selectedOption) => {
+      if (!selectedOption) return;
+
+      switch (selectedOption) {
+        case 'Configure Level':
+          configureLevel(practiceName);
+          break;
+        case 'Enable/Disable':
+          configureStatus(practiceName);
+          break;
+      }
+    });
+}
+
+// Function to open the Health Guide in a Webview
+function openGuide() {
+  const panel = vscode.window.createWebviewPanel(
+    'healthGuide', // Panel ID
+    'Health Guide', // Title
+    vscode.ViewColumn.One, // Show in the first column
+    {
+      enableScripts: true, // Allow scripts in the webview
+      retainContextWhenHidden: true, // Retain the webview content when hidden
+    }
+  );
+
+  panel.webview.html = guideView(); // Set the HTML content for the webview
+}
+
 // Export classes and functions
 module.exports = {
   ConfigProvider,
   configurePractice,
+  openGuide, // Export the openGuide function
 };

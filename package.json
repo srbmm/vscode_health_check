@@ -58,6 +58,12 @@
           "id": "health-time-view",
           "name": "Health View"
         }
+      ],
+      "explorer": [
+        {
+          "id": "healthGuideSidebar",
+          "name": "Health Guide"
+        }
       ]
     }
   },

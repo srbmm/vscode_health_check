@@ -1,35 +1,39 @@
 //level : Low, Medium, High
 const practices = [
     {
-        name: "Eye",
-        description: "Take a break to relax your eyes.",
-        emoji: "👁️", // Eye emoji
-        color: "#009c41",
-        time: 24,
-        timeOut: 5,
-        status: true,
-        level: "high"
+      "name": "Eye",
+      "description": "Take a break to relax your eyes.",
+      "longDescription": "Take a break to relax your eyes by looking at a distant object for a few minutes. This helps reduce eye strain and improves focus.",
+      "emoji": "👁️",
+      "color": "#009c41",
+      "time": 24,
+      "timeOut": 5,
+      "status": true,
+      "level": "medium"
     },
     {
-        name: "Drinking Water",
-        description: "Stay hydrated by drinking water.",
-        emoji: "💧", // Water droplet emoji
-        color: "#007f9c",
-        time: 60,
-        timeOut: 5,
-        status: true,
-        level: "medium"
+      "name": "Drinking Water",
+      "description": "Stay hydrated by drinking water.",
+      "longDescription": "Stay hydrated by drinking a glass of water every hour. Proper hydration supports overall health, including better focus and energy levels.",
+      "emoji": "💧",
+      "color": "#007f9c",
+      "time": 60,
+      "timeOut": 5,
+      "status": true,
+      "level": "high"
     },
     {
-        name: "Walking",
-        description: "Get up and stretch your legs.",
-        emoji: "🚶", // Person walking emoji
-        color: "#bd6500",
-        time: 10,
-        timeOut: 5,
-        status: true,
-        level: "low"
+      "name": "Walking",
+      "description": "Get up and stretch your legs.",
+      "longDescription": "Get up and stretch your legs to improve circulation and reduce the risk of stiffness. A short walk can also refresh your mind and boost productivity.",
+      "emoji": "🚶",
+      "color": "#bd6500",
+      "time": 10,
+      "timeOut": 5,
+      "status": true,
+      "level": "low"
     }
-];
+  ]
+  
 
 module.exports = { practices };

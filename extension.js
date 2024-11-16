@@ -7,7 +7,7 @@ const {
   deleteMainTimer,
   addMainInterval,
 } = require("./timer");
-const { ConfigProvider, configurePractice } = require("./config/configView"); // Import ConfigView and related methods
+const { ConfigProvider, configurePractice, openGuide } = require("./config/configView"); // Import ConfigView and related methods
 const { readConfig } = require("./config/storage"); // Import storage functions
 const { notification } = require("./notifications");
 const vscode = require("vscode");
@@ -36,6 +36,11 @@ function activate(context) {
     }
   );
 
+  // Register the health guide command
+  context.subscriptions.push(
+    vscode.commands.registerCommand('health-time.openGuide', openGuide)
+  );
+  
   // Register refresh command (optional, to refresh the tree view manually)
   const refreshTreeViewCommand = vscode.commands.registerCommand(
     "health-time.refreshTreeView",

@@ -2,31 +2,34 @@
   {
     "name": "Eye",
     "description": "Take a break to relax your eyes.",
+    "longDescription": "Take a break to relax your eyes.",
     "emoji": "👁️",
     "color": "#009c41",
     "time": 24,
     "timeOut": 5,
     "status": true,
-    "level": "medium"
+    "level": "high"
   },
   {
     "name": "Drinking Water",
     "description": "Stay hydrated by drinking water.",
+    "longDescription": "Take a break to relax your eyes.",
     "emoji": "💧",
     "color": "#007f9c",
     "time": 60,
     "timeOut": 5,
-    "status": true,
+    "status": false,
     "level": "high"
   },
   {
     "name": "Walking",
     "description": "Get up and stretch your legs.",
+    "longDescription": "Take a break to relax your eyes.",
     "emoji": "🚶",
     "color": "#bd6500",
     "time": 10,
     "timeOut": 5,
     "status": true,
-    "level": "low"
+    "level": "medium"
   }
 ]
